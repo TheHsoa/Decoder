@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabulary.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/Word.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/WorkWithFile.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/source.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
