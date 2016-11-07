@@ -1,5 +1,8 @@
 package com.nstu.substitutioncipher;
 
+import com.nstu.substitutioncipher.setofwords.SetOfWords;
+import com.nstu.substitutioncipher.word.*;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,7 +29,7 @@ public class Vocabulary {
         }
     }
 
-    public boolean inVocabulary(Word word){
+    public boolean inVocabulary(WordBase word){
         try {
             WorkWithFile reader = new WorkWithFile(name + "\\" + word.getLength() + "\\" + word.getStructure() + ".txt");
             String line;
@@ -53,7 +56,12 @@ public class Vocabulary {
         return words;
     }
 
-    private void addNewWord(Word word) throws IOException {
+    public long getNumberOfWordsInStructure(String structure) throws IOException {
+        File structureFile = new File(name + "\\" + structure.length() + "\\" + structure + ".txt");
+        return !structureFile.exists() ? 0 : (structureFile.length() / (structure.length() + 2));
+    }
+
+    private void addNewWord(WordBase word) throws IOException {
         if(!inVocabulary(word)) {
             WorkWithFile dict = new WorkWithFile(name + "\\" + word.getLength() + "\\" + word.getStructure() + ".txt");
             dict.writeLineInTheEnd(word.getName());
@@ -80,7 +88,7 @@ public class Vocabulary {
     }
 
     public void addSetOfWords(SetOfWords setOfWords) throws IOException {
-        Iterator<Word> wordIterator = setOfWords.getSetOfWords().iterator();
+        Iterator<WordBase> wordIterator = setOfWords.getSetOfWords().iterator();
         while(wordIterator.hasNext()) {
             addNewWord(wordIterator.next());
         }

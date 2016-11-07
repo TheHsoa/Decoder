@@ -1,9 +1,10 @@
 package com.nstu.substitutioncipher.decryption;
 
-import com.nstu.substitutioncipher.SetOfWords;
+import com.nstu.substitutioncipher.setofwords.SetOfWords;
 import com.nstu.substitutioncipher.TextStandardize;
 import com.nstu.substitutioncipher.Vocabulary;
-import com.nstu.substitutioncipher.Word;
+import com.nstu.substitutioncipher.word.Word;
+import com.nstu.substitutioncipher.word.WordBase;
 
 import java.io.*;
 import java.util.*;
@@ -15,6 +16,8 @@ public class Decrypt {
 
     private final int maxIterationForText = 10000;
     public int iterations = 0;
+    public double averageDept = 0;
+    public double averageWordsInVocabulary;
 
     public void DecryptFromFileToFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
@@ -33,12 +36,12 @@ public class Decrypt {
         writer.close();
     }
 
-    public String SubstitutionCipherDecrypt(String text, Vocabulary vocabulary) {
+    public String SubstitutionCipherDecrypt(String text, Vocabulary vocabulary) throws IOException {
         text = TextStandardize.convertToStandardText(text);
 
         if(text != "") {
 
-            SetOfWords setOfWords = new SetOfWords(text);
+            SetOfWords setOfWords = new SetOfWords(text, vocabulary);
 
             Map<String, String> wordsMap = DecipherWords(setOfWords, vocabulary);
             if(wordsMap == null) {
@@ -60,7 +63,7 @@ public class Decrypt {
             return null;
         }
 
-        List<Word> words = new ArrayList<>(setOfWords.getSetOfAbcWords());
+        List<WordBase> words = new ArrayList<>(setOfWords.getSetOfAbcWords());
 
         words.sort((o1, o2) -> o1.compareTo(o2));
 
@@ -75,7 +78,7 @@ public class Decrypt {
             if(i < 0)
                 return null;
 
-            Word word = words.get(i);
+            WordBase word = words.get(i);
 
             if(!wordsDecrypt.nextWord(word)) {
                 wordsDecrypt.clearWordInAbcMap(words.get(i));
@@ -86,6 +89,8 @@ public class Decrypt {
                 i++;
             }
         }
+        averageDept = wordsDecrypt.getAverageDebt();
+        averageWordsInVocabulary = wordsDecrypt.getAverageWordsInVocabulary();
 
         return wordsDecrypt.getAbcDecryptMap();
     }
@@ -97,7 +102,7 @@ public class Decrypt {
             return null;
         }
 
-        Iterator<Word> iterator = setOfWords.getSetOfWords().iterator();
+        Iterator<WordBase> iterator = setOfWords.getSetOfWords().iterator();
 
         while (iterator.hasNext()) {
             String word = iterator.next().getName();

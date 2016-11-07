@@ -1,5 +1,9 @@
 package com.nstu.substitutioncipher;
 
+import com.nstu.substitutioncipher.setofwords.SetOfWords;
+import com.nstu.substitutioncipher.word.Word;
+import com.nstu.substitutioncipher.word.WordBase;
+
 import java.io.*;
 import java.util.Iterator;
 
@@ -55,11 +59,11 @@ public class DictionaryForm {
                     writer.write("N_wordsInSet=" + words.getSetOfAbcWords().size());
                     writer.newLine();
 
-                    Iterator<Word> wordIterator = words.getSetOfAbcWords().iterator();
+                    Iterator<WordBase> wordIterator = words.getSetOfAbcWords().iterator();
 
                     int currentLength = 0;
                     while(wordIterator.hasNext()) {
-                        Word nextWord = wordIterator.next();
+                        WordBase nextWord = wordIterator.next();
                         if (currentLength != nextWord.getLength() && currentLength != 0) {
                             writer.newLine();
                             writer.write(nextWord.getLength() + ": ");

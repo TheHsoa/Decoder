@@ -1,8 +1,9 @@
 package com.nstu.substitutioncipher.decryption;
 
-import com.nstu.substitutioncipher.SetOfWords;
+import com.nstu.substitutioncipher.setofwords.SetOfWords;
 import com.nstu.substitutioncipher.Vocabulary;
-import com.nstu.substitutioncipher.Word;
+import com.nstu.substitutioncipher.word.Word;
+import com.nstu.substitutioncipher.word.WordBase;
 
 import java.io.IOException;
 import java.util.*;
@@ -34,12 +35,12 @@ public class WordsDecrypt {
         CrossingMap = new WordsCrossingMap(words.getSetOfAbcWords());
         AbcDecryptMap = new AbcDecryptMap();
 
-        Iterator<Word> iterator = words.getSetOfAbcWords().iterator();
+        Iterator<WordBase> iterator = words.getSetOfAbcWords().iterator();
 
         Set<Integer> allChars = new HashSet<>();
 
         while (iterator.hasNext()) {
-            Word word = iterator.next();
+            WordBase word = iterator.next();
 
             Set<Integer> tempChars = new HashSet<>();
 
@@ -66,14 +67,14 @@ public class WordsDecrypt {
         }
     }
 
-    public boolean haveWordInVocabulary(Word word) {
+    public boolean haveWordInVocabulary(WordBase word) {
         if(WordsVocabulary.get(word.getStructure()).size() <= (WordsDecryptMap.get(word.getStructure()).get(word.getName()))) {
             return false;
         }
         return true;
     }
 
-    public boolean nextWord(Word word) {
+    public boolean nextWord(WordBase word) {
 
         while (haveWordInVocabulary(word)) {
 
@@ -104,11 +105,11 @@ public class WordsDecrypt {
         return false;
     }
 
-    public void clearDecryptWord(Word word) {
+    public void clearDecryptWord(WordBase word) {
         WordsDecryptMap.get(word.getStructure()).put(word.getName(), 0);
     }
 
-    public void clearWordInAbcMap(Word word) {
+    public void clearWordInAbcMap(WordBase word) {
         AbcDecryptMap.clearChars(WordsNewChars.get(word.getName()));
     }
 
@@ -124,7 +125,7 @@ public class WordsDecrypt {
         return false;
     }
 
-    private boolean haveThatVocabularyWordIdAnotherWords(Word word) {
+    private boolean haveThatVocabularyWordIdAnotherWords(WordBase word) {
 
         Iterator<String> iterator = WordsDecryptMap.get(word.getStructure()).keySet().iterator();
 
@@ -136,5 +137,48 @@ public class WordsDecrypt {
         }
 
         return false;
+    }
+
+    public double getAverageDebt() {
+        double AverageDebt = 0;
+        int numOfWords = 0;
+        Iterator<String> structureIterator = WordsDecryptMap.keySet().iterator();
+        while (structureIterator.hasNext()) {
+            String structure = structureIterator.next();
+
+            int wordsInVocabulary;
+            if(WordsVocabulary.containsKey(structure)) {
+                wordsInVocabulary = WordsVocabulary.get(structure).size() * WordsDecryptMap.get(structure).keySet().size();
+            }
+            else wordsInVocabulary = 0;
+
+            Iterator<String> wordIterator = WordsDecryptMap.get(structure).keySet().iterator();
+            while (wordIterator.hasNext()) {
+                String word = wordIterator.next();
+                AverageDebt += wordsInVocabulary == 0 ? 1 : (WordsDecryptMap.get(structure).get(word) + 1) / wordsInVocabulary;
+                numOfWords ++;
+            }
+        }
+        return AverageDebt / numOfWords;
+    }
+
+    public double getAverageWordsInVocabulary() {
+        double WordsInVocabulary = 0;
+        int numOfWords = 0;
+
+        Iterator<String> structureIterator = WordsDecryptMap.keySet().iterator();
+        while (structureIterator.hasNext()) {
+            String structure = structureIterator.next();
+
+            int words = WordsDecryptMap.get(structure).keySet().size();
+
+            if(WordsVocabulary.containsKey(structure)) {
+                WordsInVocabulary += WordsVocabulary.get(structure).size() * words;
+            }
+
+            numOfWords += words;
+        }
+
+        return WordsInVocabulary / numOfWords;
     }
 }

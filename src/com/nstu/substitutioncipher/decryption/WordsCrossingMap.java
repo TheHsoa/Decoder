@@ -1,6 +1,7 @@
 package com.nstu.substitutioncipher.decryption;
 
-import com.nstu.substitutioncipher.Word;
+import com.nstu.substitutioncipher.word.Word;
+import com.nstu.substitutioncipher.word.WordBase;
 
 import java.util.*;
 
@@ -10,7 +11,7 @@ import java.util.*;
 public class WordsCrossingMap {
     private Map<String, ArrayList<String>> wordsCrossingMap = new HashMap<>();
 
-    public WordsCrossingMap(Set<Word> wordsSet) {
+    public WordsCrossingMap(Set<WordBase> wordsSet) {
         wordsCrossingMap = generateWordsCrossingMap(wordsSet);
     }
 
@@ -18,21 +19,21 @@ public class WordsCrossingMap {
         return wordsCrossingMap;
     }
 
-    private Map generateWordsCrossingMap(Set<Word> wordsSet) {
+    private Map generateWordsCrossingMap(Set<WordBase> wordsSet) {
         Map<String, ArrayList<String>> wordsCrossingMap = new HashMap<>();
-        Iterator<Word> iterator = wordsSet.iterator();
+        Iterator<WordBase> iterator = wordsSet.iterator();
         while (iterator.hasNext()) {
-            Word word = iterator.next();
+            WordBase word = iterator.next();
             wordsCrossingMap.put(word.getName(), crossingWordsInSet(word, wordsSet));
         }
         return wordsCrossingMap;
     }
 
-    private ArrayList<String> crossingWordsInSet(Word word, Set<Word> wordsSet) {
+    private ArrayList<String> crossingWordsInSet(WordBase word, Set<WordBase> wordsSet) {
         ArrayList<String> crossingWords = new ArrayList<>();
-        Iterator<Word> iterator = wordsSet.iterator();
+        Iterator<WordBase> iterator = wordsSet.iterator();
         while (iterator.hasNext()) {
-            Word setWord = iterator.next();
+            WordBase setWord = iterator.next();
             if(!setWord.getName().equals(word.getName()) && crossWords(setWord, word)) {
                 crossingWords.add(setWord.getName());
             }
@@ -40,7 +41,7 @@ public class WordsCrossingMap {
         return crossingWords;
     }
 
-    private boolean crossWords(Word firstWord, Word secondWord) {
+    private boolean crossWords(WordBase firstWord, WordBase secondWord) {
         Iterator<Integer> iterator = firstWord.getAbc().iterator();
         while (iterator.hasNext()) {
             if(secondWord.getAbc().contains(iterator.next())) {

@@ -4,6 +4,7 @@ import com.nstu.substitutioncipher.decryption.Decrypt;
 import com.nstu.substitutioncipher.decryption.DecryptionForm;
 import com.nstu.substitutioncipher.decryption.WordsCrossingMap;
 import com.nstu.substitutioncipher.decryption.WordsDecrypt;
+import com.nstu.substitutioncipher.setofwords.SetOfWords;
 
 import java.io.*;
 import java.util.Date;

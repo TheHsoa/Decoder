@@ -23,7 +23,7 @@ public class Statistic {
     }
 
     private void setStructStat() {
-        structStat = new HashMap<Integer,Integer>();
+        structStat = new HashMap<>();
         File[] filesLen = (new File(vocabularyName)).listFiles();
         for (File fileLen : filesLen) {
             int i = Integer.parseInt(fileLen.getName().replaceAll(".txt", ""));
@@ -32,9 +32,9 @@ public class Statistic {
     }
 
     private void setAllStat() {
-        wordStat = new  HashMap<Integer,Integer>();
-        easyStructStat = new HashMap<Integer,Integer>();
-        otherStructStat = new HashMap<Integer,Integer>();
+        wordStat = new  HashMap<>();
+        easyStructStat = new HashMap<>();
+        otherStructStat = new HashMap<>();
         File[] filesLen = (new File(vocabularyName)).listFiles();
         for (File fileLen : filesLen) {
             int i = Integer.parseInt(fileLen.getName().replaceAll(".txt", ""));

@@ -1,28 +1,28 @@
-package com.nstu.substitutioncipher;
+package com.nstu.substitutioncipher.word;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * Created by R_A_D on 08.11.2015.
+ * Created by R_A_D on 07.11.2016.
  */
-public class Word implements Comparable<Word>{
-    private String name;
-    private String structure;
-    private int length;
-    private Set<Integer> abc = new HashSet<>();
+public abstract class WordBase implements Comparable {
+    protected String name;
+    protected String structure;
+    protected int length;
+    protected Set<Integer> abc = new HashSet<>();
 
-    public Set<Integer> getAbc() {
-        return abc;
-    }
-
-    public Word(String name) {
+    protected WordBase(String name) {
         this.name = createClearWord(name);
         this.structure = calcStructure();
         this.length = this.name.length();
         createAbc();
 
+    }
+
+    public Set<Integer> getAbc() {
+        return abc;
     }
 
     public String getName() {
@@ -37,7 +37,7 @@ public class Word implements Comparable<Word>{
         return length;
     }
 
-    private String calcStructure() {
+    protected String calcStructure() {
         String structure = "а";
         char index = 'б';
         for(int i = 1; i < this.name.length(); i++) {
@@ -55,13 +55,13 @@ public class Word implements Comparable<Word>{
         return structure;
     }
 
-    private String createClearWord(String name){
+    protected String createClearWord(String name){
         name = name.replaceAll("-", "");
         name = name.toLowerCase();
         return name;
     }
 
-    private void createAbc() {
+    protected void createAbc() {
         for(int i = 0; i < length; i ++) {
             if(!abc.contains((int) name.charAt(i))) {
                 abc.add((int) name.charAt(i));
@@ -69,20 +69,11 @@ public class Word implements Comparable<Word>{
         }
     }
 
-    public boolean containsWordInWordsSet(Set<Word> s) {
-        for (Word word : s) {
+    public boolean containsWordInWordsSet(Set<WordBase> s) {
+        for (WordBase word : s) {
             if (name.equals(word.getName())) return true;
         }
         return false;
-    }
-
-    @Override
-    public int compareTo(Word w) {
-
-        if(w.getLength() == length) {
-            return -1;
-        }
-        return  w.getLength() - length;
     }
 
     public boolean checkWithRegExp(Pattern pattern) {
