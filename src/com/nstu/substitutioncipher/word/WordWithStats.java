@@ -27,14 +27,17 @@ public class WordWithStats extends WordBase {
     public int compareTo(Object o) {
         WordWithStats w = (WordWithStats) o;
 
-        if(structureStats == w.structureStats && w.length == length) {
+        double firstStructureLen = (double) structureStats / length;
+        double secondStructureLen = (double) w.structureStats / w.length;
+
+        if(firstStructureLen == secondStructureLen && structureStats == w.structureStats) {
             return -1;
         }
-
-        if(structureStats == w.structureStats) {
-            return w.length - length;
+        if(firstStructureLen == secondStructureLen) {
+         //   return structureStats > w.structureStats ? 1 : -1;
+            return w.length > length ? 1 : -1;
         }
 
-        return (int)(structureStats - w.structureStats);
+        return firstStructureLen > secondStructureLen ? 1 : -1;
     }
 }

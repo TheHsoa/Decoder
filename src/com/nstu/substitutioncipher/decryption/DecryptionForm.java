@@ -34,13 +34,17 @@ public class DecryptionForm {
             else {
                 if(!line.equals("")) {
                     line = delFirstAndLastSpaces(line);
-                    writer.write(" Nw=" + numOfWords(line));
+                    int numOfWords = numOfWords(line);
+
+                    writer.write(" N=" + (line.length() - numOfWords));
+
+                    writer.write(" Nw=" + numOfWords);
 
                     SetOfWords words = new SetOfWords(line, vocabulary);
 
                     writer.write(" Ndw=" + words.getSetOfWords().size());
 
-                    writer.write(" Nws=" + words.getSetOfAbcWords().size());
+                    writer.write(" Nws=" + words.getSetOfAbcWords().size() + " ");
 
                     String decryptionStrings = DecryptionStrings(words, vocabulary);
 
@@ -79,6 +83,7 @@ public class DecryptionForm {
         String decryptAbc = "";
         String isTrue = "";
         int numOfErrors = 0;
+        int numOfCharsNotInMap = 0;
 
         for(int i = 0; i < standardFormAbc.length(); i++) {
             if(standardFormAbc.charAt(i) != ' ') {
@@ -96,8 +101,8 @@ public class DecryptionForm {
                 }
                 else {
                     decryptAbc += "*";
-                    isTrue += "-";
-                    numOfErrors ++;
+                    isTrue += " ";
+                    numOfCharsNotInMap ++;
                 }
             }
             else {
@@ -106,10 +111,10 @@ public class DecryptionForm {
             }
         }
 
-        return "Ni=" + iterations + " Av=" + String.format("%.2f", decrypt.averageWordsInVocabulary) + " Ad=" + String.format("%.3f", decrypt.averageDept * 100) + System.getProperty("line.separator")
+        return "Ni=" + iterations + " Av=" + String.format("%.2f", decrypt.averageWordsInVocabulary) + " Ad=" + String.format("%.1f", decrypt.averageDept * 100) + "%" + System.getProperty("line.separator")
                 + standardFormAbc.toUpperCase() + System.getProperty("line.separator")
                 + decryptAbc.toUpperCase() + System.getProperty("line.separator")
-                + isTrue + " ----" + numOfErrors;
+                + (numOfErrors == 0 && numOfCharsNotInMap != 31 ? "" : (isTrue +  " ----" + (numOfCharsNotInMap == 31 ? numOfCharsNotInMap : numOfErrors)));
     }
 
 

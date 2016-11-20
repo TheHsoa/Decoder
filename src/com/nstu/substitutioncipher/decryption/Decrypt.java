@@ -70,8 +70,11 @@ public class Decrypt {
         int i = 0;
 
         while(i < words.size()) {
-            if(iterations == maxIterationForText)
+            if(iterations == maxIterationForText) {
+                averageDept = wordsDecrypt.getAverageDebt();
+                averageWordsInVocabulary = wordsDecrypt.getAverageWordsInVocabulary();
                 return null;
+            }
 
             iterations ++;
 
