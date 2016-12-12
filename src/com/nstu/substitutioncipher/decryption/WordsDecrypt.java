@@ -53,7 +53,7 @@ public class WordsDecrypt {
             if(!WordsDecryptMap.containsKey(word.getStructure())) {
 
                 Map<String,Integer> temp = new HashMap<>();
-                temp.put(word.getName(), 0);
+                temp.put(word.getName(), -1);
                 WordsDecryptMap.put(word.getStructure(),temp);
 
                 WordsVocabulary.put(word.getStructure(), vocabulary.getWordsInStructure(word.getStructure()));
@@ -61,14 +61,14 @@ public class WordsDecrypt {
             }
             else {
                 if(!WordsDecryptMap.get(word.getStructure()).containsKey(word.getName())) {
-                    WordsDecryptMap.get(word.getStructure()).put(word.getName(), 0);
+                    WordsDecryptMap.get(word.getStructure()).put(word.getName(), -1);
                 }
             }
         }
     }
 
     public boolean haveWordInVocabulary(WordBase word) {
-        if(WordsVocabulary.get(word.getStructure()).size() <= (WordsDecryptMap.get(word.getStructure()).get(word.getName()))) {
+        if(WordsVocabulary.get(word.getStructure()).size() <= (WordsDecryptMap.get(word.getStructure()).get(word.getName())) + 1) {
             return false;
         }
         return true;
@@ -76,7 +76,13 @@ public class WordsDecrypt {
 
     public boolean nextWord(WordBase word) {
 
+        clearWordInAbcMap(word);
+
         while (haveWordInVocabulary(word)) {
+
+            WordsDecryptMap.get(word.getStructure()).put(word.getName(), WordsDecryptMap.get(word.getStructure()).get(word.getName()) + 1);
+
+         //   System.out.println(word.getName() + " - " + WordsDecryptMap.get(word.getStructure()).get(word.getName()));
 
             if(!haveThatVocabularyWordIdAnotherWords(word)
                     && AbcDecryptMap.addChars(word.getName(), WordsVocabulary
@@ -95,18 +101,18 @@ public class WordsDecrypt {
                         return true;
                     }
                 }
-                AbcDecryptMap.clearChars(WordsNewChars.get(word.getName()));
+                clearWordInAbcMap(word);
             }
-
-            WordsDecryptMap.get(word.getStructure()).put(word.getName(), WordsDecryptMap.get(word.getStructure()).get(word.getName()) + 1);
         }
+
+        clearWordInAbcMap(word);
         clearDecryptWord(word);
-       // AbcDecryptMap.clearChars(WordsNewChars.get(word.getName()));
+
         return false;
     }
 
     public void clearDecryptWord(WordBase word) {
-        WordsDecryptMap.get(word.getStructure()).put(word.getName(), 0);
+        WordsDecryptMap.get(word.getStructure()).put(word.getName(), -1);
     }
 
     public void clearWordInAbcMap(WordBase word) {

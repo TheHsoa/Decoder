@@ -38,9 +38,10 @@ public class AbcDecryptMap {
     }
 
     public boolean isValidSubstitution(String before, String after) {
-        for(int i = 0; i < before.length(); i++) {
-            if((abcDecryptMap.get((int)before.charAt(i)) != null && abcDecryptMap.get((int)before.charAt(i)) != (int)after.charAt(i))
-                    || (abcDecryptMap.get((int)before.charAt(i)) == null && abcDecryptMap.containsValue((int)after.charAt(i)))) return false;
+        for (int i = 0; i < before.length(); i++) {
+            if ((abcDecryptMap.get((int) before.charAt(i)) != null && abcDecryptMap.get((int) before.charAt(i)) != (int) after.charAt(i))
+                    || (abcDecryptMap.get((int) before.charAt(i)) == null && abcDecryptMap.containsValue((int) after.charAt(i))))
+                return false;
         }
         return true;
     }

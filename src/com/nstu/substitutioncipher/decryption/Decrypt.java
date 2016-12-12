@@ -55,7 +55,7 @@ public class Decrypt {
 
     protected Map<Integer, Integer> DecipherAbc(SetOfWords setOfWords,  Vocabulary vocabulary) {
 
-        WordsDecrypt wordsDecrypt = null;
+        WordsDecrypt wordsDecrypt;
         try {
             wordsDecrypt = new WordsDecrypt(setOfWords, vocabulary);
         } catch (IOException e) {
@@ -84,8 +84,6 @@ public class Decrypt {
             WordBase word = words.get(i);
 
             if(!wordsDecrypt.nextWord(word)) {
-                wordsDecrypt.clearWordInAbcMap(words.get(i));
-                wordsDecrypt.clearDecryptWord(words.get(i));
                 i--;
             }
             else {
