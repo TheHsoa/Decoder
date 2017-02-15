@@ -65,7 +65,7 @@ public class Decrypt {
 
         List<WordBase> words = new ArrayList<>(setOfWords.getSetOfAbcWords());
 
-        words.sort((o1, o2) -> o1.compareTo(o2));
+        words.sort(Comparable::compareTo);
 
         int i = 0;
 

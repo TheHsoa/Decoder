@@ -90,9 +90,8 @@ public class SetOfWords {
 
     private Set<Integer> fillAbc(Set<WordBase> words) {
         Set<Integer> abc = new HashSet<>();
-        Iterator<WordBase> iterator = words.iterator();
-        while (iterator.hasNext()){
-            addCharsInAbc(iterator.next(), abc);
+        for (WordBase word : words) {
+            addCharsInAbc(word, abc);
             if (abc.size() >= 32) break;
         }
         return abc;
@@ -101,13 +100,12 @@ public class SetOfWords {
     private Set<WordBase> fillSetOfAbcWords(Set<WordBase> words, Set<Integer> abc) {
         Set<WordBase> abcWords = new TreeSet<>();
         Set<Integer> bufAbc = new HashSet<>();
-        Iterator<WordBase> iterator = words.iterator();
 
-        while (!bufAbc.equals(abc) && iterator.hasNext()) {
-            WordBase word = iterator.next();
-            if(containsChar(word, bufAbc) != 0) {
+        for (WordBase word : words) {
+            if (containsChar(word, bufAbc) != 0) {
                 addCharsInAbc(word, bufAbc);
                 abcWords.add(word);
+                if(!bufAbc.equals(abc)) break;
             }
         }
         return abcWords;
@@ -122,9 +120,8 @@ public class SetOfWords {
     }
 
     private boolean containWord(WordBase word, Set<WordBase> abc) {
-        Iterator<WordBase> iterator = abc.iterator();
-        while(iterator.hasNext()) {
-            if(iterator.next().getName().equals(word.getName())) {
+        for (WordBase anAbc : abc) {
+            if (anAbc.getName().equals(word.getName())) {
                 return true;
             }
         }
@@ -137,9 +134,8 @@ public class SetOfWords {
 
     private int getSumLengthOfWordsInSetOfWords(Set<WordBase> setOfWords) {
         int length = 0;
-        Iterator<WordBase> iterator = setOfWords.iterator();
-        while(iterator.hasNext()) {
-            length += iterator.next().getLength();
+        for (WordBase setOfWord : setOfWords) {
+            length += setOfWord.getLength();
         }
         return length;
     }
