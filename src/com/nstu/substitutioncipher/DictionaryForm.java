@@ -7,9 +7,6 @@ import com.nstu.substitutioncipher.word.WordBase;
 import java.io.*;
 import java.util.Iterator;
 
-/**
- * Created by R_A_D on 26.09.2016.
- */
 public class DictionaryForm {
 
     private static final String firstHeader = "_1_";
@@ -92,12 +89,12 @@ public class DictionaryForm {
         writer.close();
     }
 
-    public static int numOfWords(String text)
+    private static int numOfWords(String text)
     {
         return text.split(" ").length;
     }
 
-    public static String delFirstAndLastSpaces(String text)
+    static String delFirstAndLastSpaces(String text)
     {
         return text.trim();
     }

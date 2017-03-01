@@ -8,19 +8,10 @@ import com.nstu.substitutioncipher.word.WordWithStats;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Created by R_A_D on 26.09.2016.
- */
 public class SetOfWords {
     private Set<WordBase> setOfWords = new TreeSet<>();
     private Set<Integer> abc = new HashSet<>();
     private Set<WordBase> setOfAbcWords = new TreeSet<>();
-
-    private Vocabulary vocabulary = null;
-
-    public Set<Integer> getAbc() {
-        return abc;
-    }
 
     public Set<WordBase> getSetOfWords() {
 
@@ -42,7 +33,6 @@ public class SetOfWords {
     public SetOfWords(String text, Vocabulary vocabulary) throws IOException {
         text = deleteFirstAndLastWords(text);
 
-        this.vocabulary = vocabulary;
         setOfWords = fillWords(text, vocabulary);
         abc = fillAbc(setOfWords);
         setOfAbcWords = fillSetOfAbcWords_WithTotalLength100(setOfWords, abc);
@@ -102,10 +92,10 @@ public class SetOfWords {
         Set<Integer> bufAbc = new HashSet<>();
 
         for (WordBase word : words) {
+            if(bufAbc.equals(abc)) break;
             if (containsChar(word, bufAbc) != 0) {
                 addCharsInAbc(word, bufAbc);
                 abcWords.add(word);
-                if(!bufAbc.equals(abc)) break;
             }
         }
         return abcWords;
