@@ -7,6 +7,10 @@ import java.io.IOException;
 public class WordWithStats extends WordBase {
     private long structureStats;
 
+    public long getStructureStats() {
+        return structureStats;
+    }
+
     public WordWithStats(String name, Vocabulary vocabulary) throws IOException {
         super(name);
         structureStats = vocabulary.getNumberOfWordsInStructure(structure);
@@ -26,6 +30,10 @@ public class WordWithStats extends WordBase {
         if(firstStructureLen == secondStructureLen) {
          //   return structureStats > w.structureStats ? 1 : -1;
             return w.length > length ? 1 : -1;
+        }
+
+        if(firstStructureLen == 0) {
+            return -1;
         }
 
         return firstStructureLen > secondStructureLen ? 1 : -1;

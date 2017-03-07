@@ -3,21 +3,17 @@ package com.nstu.substitutioncipher.decryption;
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
 import com.nstu.substitutioncipher.TextStandardize;
 import com.nstu.substitutioncipher.Vocabulary;
-import com.nstu.substitutioncipher.word.Word;
 import com.nstu.substitutioncipher.word.WordBase;
 
 import java.io.*;
 import java.util.*;
 
-/**
- * Created by R_A_D on 01.10.2016.
- */
 public class Decrypt {
 
-    private final int maxIterationForText = 10000;
-    public int iterations = 0;
-    public double averageDept = 0;
-    public double averageWordsInVocabulary;
+    int iterations = 0;
+    double averageDepth = 0;
+    double averageWordsInVocabulary;
+    long operationTime;
 
     public void DecryptFromFileToFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
@@ -36,10 +32,10 @@ public class Decrypt {
         writer.close();
     }
 
-    public String SubstitutionCipherDecrypt(String text, Vocabulary vocabulary) throws IOException {
+    private String SubstitutionCipherDecrypt(String text, Vocabulary vocabulary) throws IOException {
         text = TextStandardize.convertToStandardText(text);
 
-        if(text != "") {
+        if(!Objects.equals(text, "")) {
 
             SetOfWords setOfWords = new SetOfWords(text, vocabulary);
 
@@ -53,7 +49,9 @@ public class Decrypt {
         return "";
     }
 
-    protected Map<Integer, Integer> DecipherAbc(SetOfWords setOfWords,  Vocabulary vocabulary) {
+    Map<Integer, Integer> DecipherAbc(SetOfWords setOfWords, Vocabulary vocabulary) {
+
+        long startTime = System.currentTimeMillis();
 
         WordsDecrypt wordsDecrypt;
         try {
@@ -69,17 +67,27 @@ public class Decrypt {
 
         int i = 0;
 
+        int maxDepth = 0;
+
+        Map<Integer, Integer> maxDepthAbcDecryptMap = new HashMap<>();
+
         while(i < words.size()) {
+            int maxIterationForText = 10000;
             if(iterations == maxIterationForText) {
-                averageDept = wordsDecrypt.getAverageDebt();
+                averageDepth = wordsDecrypt.getAverageDebt();
                 averageWordsInVocabulary = wordsDecrypt.getAverageWordsInVocabulary();
-                return null;
+                operationTime = System.currentTimeMillis() - startTime;
+                return maxDepthAbcDecryptMap;
             }
 
-            iterations ++;
+            iterations++;
 
-            if(i < 0)
-                return null;
+            if(i < 0) {
+                averageDepth = wordsDecrypt.getAverageDebt();
+                averageWordsInVocabulary = wordsDecrypt.getAverageWordsInVocabulary();
+                operationTime = System.currentTimeMillis() - startTime;
+                return maxDepthAbcDecryptMap;
+            }
 
             WordBase word = words.get(i);
 
@@ -88,25 +96,28 @@ public class Decrypt {
             }
             else {
                 i++;
+                if(maxDepth < i) {
+                    maxDepth = i;
+                    maxDepthAbcDecryptMap = wordsDecrypt.getAbcDecryptMap();
+                }
             }
         }
-        averageDept = wordsDecrypt.getAverageDebt();
+        averageDepth = wordsDecrypt.getAverageDebt();
         averageWordsInVocabulary = wordsDecrypt.getAverageWordsInVocabulary();
+        operationTime = System.currentTimeMillis() - startTime;
 
         return wordsDecrypt.getAbcDecryptMap();
     }
 
-    public Map<String, String> DecipherWords(SetOfWords setOfWords,  Vocabulary vocabulary) {
+    private Map<String, String> DecipherWords(SetOfWords setOfWords, Vocabulary vocabulary) {
         Map<String, String> wordsMap = new HashMap<>();
         Map<Integer, Integer> abcMap = DecipherAbc(setOfWords, vocabulary);
         if(abcMap == null) {
             return null;
         }
 
-        Iterator<WordBase> iterator = setOfWords.getSetOfWords().iterator();
-
-        while (iterator.hasNext()) {
-            String word = iterator.next().getName();
+        for (WordBase wordBase : setOfWords.getSetOfWords()) {
+            String word = wordBase.getName();
             wordsMap.put(word, SubstituteAbcMapInWord(abcMap, word));
         }
         return wordsMap;

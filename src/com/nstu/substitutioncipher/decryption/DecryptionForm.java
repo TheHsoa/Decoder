@@ -6,12 +6,10 @@ import com.nstu.substitutioncipher.Vocabulary;
 import java.io.*;
 import java.util.*;
 
-/**
- * Created by R_A_D on 30.10.2016.
- */
 public class DecryptionForm {
     private static final String firstHeader = "_1_";
     private static final String standardFormAbc = "оеаи    нтс    врлп    кдм    йыь    уяюэ     згбчх    шжцщф";
+    private long totalOperationTime = 0;
 
     public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
@@ -57,17 +55,21 @@ public class DecryptionForm {
             }
 
         } while((line = reader.readLine()) != null);
+
         reader.close();
+
+        writer.write(System.getProperty("line.separator") + "TotalDecryptTime=" + totalOperationTime);
+
         writer.close();
 
     }
 
-    public static int numOfWords(String text)
+    private static int numOfWords(String text)
     {
         return text.split(" ").length;
     }
 
-    public static String delFirstAndLastSpaces(String text)
+    private static String delFirstAndLastSpaces(String text)
     {
         return text.trim();
     }
@@ -78,12 +80,12 @@ public class DecryptionForm {
         Map<Integer, Integer> abcMap = decrypt.DecipherAbc(setOfWords, vocabulary);
         if(abcMap == null) abcMap = new HashMap<>();
 
-        String iterations = String.valueOf(decrypt.iterations);
-
         String decryptAbc = "";
         String isTrue = "";
         int numOfErrors = 0;
         int numOfCharsNotInMap = 0;
+
+        totalOperationTime += decrypt.operationTime;
 
         for(int i = 0; i < standardFormAbc.length(); i++) {
             if(standardFormAbc.charAt(i) != ' ') {
@@ -91,7 +93,7 @@ public class DecryptionForm {
                 if (abcMap.containsKey(c)) {
                     decryptAbc += (char) abcMap.get(c).intValue();
 
-                    if(c != abcMap.get(c).intValue()) {
+                    if(c != abcMap.get(c)) {
                         isTrue += "-";
                         numOfErrors ++;
                     }
@@ -111,7 +113,8 @@ public class DecryptionForm {
             }
         }
 
-        return "Ni=" + iterations + " Av=" + String.format("%.2f", decrypt.averageWordsInVocabulary) + " Ad=" + String.format("%.1f", decrypt.averageDept * 100) + "%" + System.getProperty("line.separator")
+        return "Ni=" + decrypt.iterations + String.format(" Av=%.2f", decrypt.averageWordsInVocabulary) + String.format(" Ad=%.1f", decrypt.averageDepth * 100) + "%" + String.format(" T=%dms",decrypt.operationTime) +
+                System.getProperty("line.separator")
                 + standardFormAbc.toUpperCase() + System.getProperty("line.separator")
                 + decryptAbc.toUpperCase() + System.getProperty("line.separator")
                 + (numOfErrors == 0 && numOfCharsNotInMap != 31 ? "" : (isTrue +  " ----" + (numOfCharsNotInMap == 31 ? numOfCharsNotInMap : numOfErrors)));

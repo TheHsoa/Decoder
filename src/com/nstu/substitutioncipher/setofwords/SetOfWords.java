@@ -7,11 +7,14 @@ import com.nstu.substitutioncipher.word.WordWithStats;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SetOfWords {
     private Set<WordBase> setOfWords = new TreeSet<>();
     private Set<Integer> abc = new HashSet<>();
     private Set<WordBase> setOfAbcWords = new TreeSet<>();
+    private Vocabulary vocabulary = null;
+
 
     public Set<WordBase> getSetOfWords() {
 
@@ -27,15 +30,17 @@ public class SetOfWords {
 
         setOfWords = fillWords(text);
         abc = fillAbc(setOfWords);
-        setOfAbcWords = fillSetOfAbcWords_WithTotalLength100(setOfWords, abc);
+        setOfAbcWords = fillSetOfAbcWords_WithTotalLength100();
     }
 
     public SetOfWords(String text, Vocabulary vocabulary) throws IOException {
+        this.vocabulary = vocabulary;
+
         text = deleteFirstAndLastWords(text);
 
         setOfWords = fillWords(text, vocabulary);
         abc = fillAbc(setOfWords);
-        setOfAbcWords = fillSetOfAbcWords_WithTotalLength100(setOfWords, abc);
+        setOfAbcWords = fillSetOfAbcWords_WithTotalLength100();
     }
 
     private TreeSet<WordBase> fillWords(String text) {
@@ -89,24 +94,23 @@ public class SetOfWords {
 
     private Set<WordBase> fillSetOfAbcWords(Set<WordBase> words, Set<Integer> abc) {
         Set<WordBase> abcWords = new TreeSet<>();
-        Set<Integer> bufAbc = new HashSet<>();
+        Map<Integer, Integer> bufAbcMap = new HashMap<>();
 
-        for (WordBase word : words) {
-            if(bufAbc.equals(abc)) break;
-            if (containsChar(word, bufAbc) != 0) {
-                addCharsInAbc(word, bufAbc);
-                abcWords.add(word);
-            }
-        }
+        words.stream().filter(x -> !bufAbcMap.keySet().equals(abc)).forEach(x -> addWordIfExtends(x, abcWords, bufAbcMap));
+
         return abcWords;
     }
 
-    private int containsChar(WordBase word, Set<Integer> abc) {
-        int num = 0;
+    private void addWordIfExtends(WordBase word, Set<WordBase> abcWords, Map<Integer, Integer> bufAbcMap) {
+        if(containsChar(word, bufAbcMap)) abcWords.add(word);
+        addCharsInAbc(word, bufAbcMap);
+    }
+
+    private boolean containsChar(WordBase word, Map<Integer, Integer> abc) {
         for (int i : word.getAbc()) {
-            if (!abc.contains(i)) num++;
+            if(!abc.keySet().contains(i) || abc.get(i) < 2) return true;
         }
-        return num;
+        return false;
     }
 
     private boolean containWord(WordBase word, Set<WordBase> abc) {
@@ -122,6 +126,10 @@ public class SetOfWords {
         word.getAbc().stream().filter(i -> !abc.contains(i)).forEach(abc::add);
     }
 
+    private void addCharsInAbc(WordBase word, Map<Integer, Integer> abc) {
+        word.getAbc().forEach(x -> abc.put(x, abc.containsKey(x) ? abc.get(x) + 1 : 1));
+    }
+
     private int getSumLengthOfWordsInSetOfWords(Set<WordBase> setOfWords) {
         int length = 0;
         for (WordBase setOfWord : setOfWords) {
@@ -130,15 +138,17 @@ public class SetOfWords {
         return length;
     }
 
-    private Set<WordBase> fillSetOfAbcWords_WithTotalLength100(Set<WordBase> words, Set<Integer> abc) {
-        if(getSumLengthOfWordsInSetOfWords(words) > 100) {
-            Set<WordBase> abcWords = fillSetOfAbcWords(words, abc);
+    private Set<WordBase> fillSetOfAbcWords_WithTotalLength100() {
+        Set<WordBase> wordsWithVocabulary = getSetOfWordsWithVocabulary();
+        if(getSumLengthOfWordsInSetOfWords(wordsWithVocabulary) > 100) {
+            Set<WordBase> abcWords = fillSetOfAbcWords(wordsWithVocabulary, abc);
 
-            Iterator<WordBase> iterator = words.iterator();
+            Iterator<WordBase> iterator = wordsWithVocabulary.iterator();
             int sumLength = getSumLengthOfWordsInSetOfWords(abcWords);
 
             while(sumLength < 100 && iterator.hasNext()) {
                 WordBase word = iterator.next();
+
                 if(!containWord(word, abcWords)) {
                     abcWords.add(word);
                     sumLength += word.getLength();
@@ -146,7 +156,11 @@ public class SetOfWords {
             }
             return abcWords;
         }
-        return words;
+        return wordsWithVocabulary;
+    }
+
+    private Set<WordBase> getSetOfWordsWithVocabulary() {
+        return setOfWords.stream().map(x -> (WordWithStats)x).filter(x -> x.getStructureStats() != 0).collect(Collectors.toSet());
     }
 
     private String deleteFirstAndLastWords(String text) {
