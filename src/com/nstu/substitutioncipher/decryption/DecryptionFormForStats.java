@@ -64,7 +64,8 @@ public class DecryptionFormForStats {
                 else {
                     decryptAbc += "-";
                 }
-            }
+        }
+        decryptAbc += " 1\t0\t [VOC]";
 
         return decryptAbc.toUpperCase();
     }

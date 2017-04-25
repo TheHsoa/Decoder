@@ -75,8 +75,8 @@ public class WordsDecrypt {
                     .get(WordsDecryptMap.get(word.getStructure()).
                             get(word.getName())))) {
 
-                return true;
-                /*
+                //return true;
+
                 List<String> crossing = CrossingMap.getWordsCrossingMap().get(word.getName());
 
                 if(crossing.isEmpty()) {
@@ -89,7 +89,7 @@ public class WordsDecrypt {
                     }
                 }
                 clearWordInAbcMap(word);
-                */
+
             }
             else {
                 clearWordInAbcMap(word);

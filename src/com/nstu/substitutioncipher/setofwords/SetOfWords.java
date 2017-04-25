@@ -96,7 +96,14 @@ public class SetOfWords {
         Set<WordBase> abcWords = new TreeSet<>();
         Map<Integer, Integer> bufAbcMap = new HashMap<>();
 
-        words.stream().filter(x -> !bufAbcMap.keySet().equals(abc)).forEach(x -> addWordIfExtends(x, abcWords, bufAbcMap));
+        //не тестилось, надо проверить часть:  bufAbcMap.values().stream().anyMatch(bam -> bam < 2)
+        for(WordBase word : words)
+        {
+            if(bufAbcMap.keySet().equals(abc)/* && Collections.min(bufAbcMap.values()) >= 2*/) break;
+            addWordIfExtends(word, abcWords, bufAbcMap);
+
+        }
+        //words.stream().filter(x -> !bufAbcMap.keySet().equals(abc) || bufAbcMap.values().stream().anyMatch(bam -> bam < 2)).forEach(x -> addWordIfExtends(x, abcWords, bufAbcMap));
 
         return abcWords;
     }
