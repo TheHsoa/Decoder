@@ -10,6 +10,11 @@ public class DecryptionForm {
     private static final String firstHeader = "_1_";
     private static final String standardFormAbc = "оеаи    нтс    врлп    кдм    йыь    уяюэ     згбчх    шжцщф";
     private long totalOperationTime = 0;
+    private int numOfCharsInWords;
+
+    public DecryptionForm(int numOfCharsInWords) {
+        this.numOfCharsInWords = numOfCharsInWords;
+    }
 
     public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
@@ -38,7 +43,7 @@ public class DecryptionForm {
 
                     writer.write(" Nw=" + numOfWords);
 
-                    SetOfWords words = new SetOfWords(line, vocabulary);
+                    SetOfWords words = new SetOfWords(line, vocabulary, numOfCharsInWords);
 
                     writer.write(" Ndw=" + words.getSetOfWords().size());
 
@@ -75,7 +80,7 @@ public class DecryptionForm {
     }
 
     private String DecryptionStrings(SetOfWords setOfWords, Vocabulary vocabulary) {
-        Decrypt decrypt = new Decrypt();
+        Decrypt decrypt = new Decrypt(numOfCharsInWords);
 
         Map<Integer, Integer> abcMap = decrypt.DecipherAbc(setOfWords, vocabulary);
         if(abcMap == null) abcMap = new HashMap<>();

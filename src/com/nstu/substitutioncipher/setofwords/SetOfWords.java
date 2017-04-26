@@ -14,6 +14,7 @@ public class SetOfWords {
     private Set<Integer> abc = new HashSet<>();
     private Set<WordBase> setOfAbcWords = new TreeSet<>();
     private Vocabulary vocabulary = null;
+    private int numOfCharsInWords;
 
 
     public Set<WordBase> getSetOfWords() {
@@ -33,7 +34,9 @@ public class SetOfWords {
         setOfAbcWords = fillSetOfAbcWords_WithTotalLength100();
     }
 
-    public SetOfWords(String text, Vocabulary vocabulary) throws IOException {
+    public SetOfWords(String text, Vocabulary vocabulary, int numOfCharsInWords) throws IOException {
+        this.numOfCharsInWords = numOfCharsInWords;
+
         this.vocabulary = vocabulary;
 
         text = deleteFirstAndLastWords(text);
@@ -99,7 +102,7 @@ public class SetOfWords {
         //не тестилось, надо проверить часть:  bufAbcMap.values().stream().anyMatch(bam -> bam < 2)
         for(WordBase word : words)
         {
-            if(bufAbcMap.keySet().equals(abc)/* && Collections.min(bufAbcMap.values()) >= 2*/) break;
+            if(bufAbcMap.keySet().equals(abc) && Collections.min(bufAbcMap.values()) >= numOfCharsInWords) break;
             addWordIfExtends(word, abcWords, bufAbcMap);
 
         }
@@ -115,7 +118,7 @@ public class SetOfWords {
 
     private boolean containsChar(WordBase word, Map<Integer, Integer> abc) {
         for (int i : word.getAbc()) {
-            if(!abc.keySet().contains(i) || abc.get(i) < 2) return true;
+            if(!abc.keySet().contains(i) || abc.get(i) < numOfCharsInWords) return true;
         }
         return false;
     }
@@ -167,7 +170,7 @@ public class SetOfWords {
     }
 
     private Set<WordBase> getSetOfWordsWithVocabulary() {
-        return setOfWords.stream().map(x -> (WordWithStats)x).filter(x -> x.getStructureStats() != 0).collect(Collectors.toSet());
+        return new TreeSet<>(setOfWords.stream().map(x -> (WordWithStats)x).filter(x -> x.getStructureStats() != 0).collect(Collectors.toSet()));
     }
 
     private String deleteFirstAndLastWords(String text) {

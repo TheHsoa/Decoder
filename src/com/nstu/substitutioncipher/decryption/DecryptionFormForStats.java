@@ -10,6 +10,11 @@ import java.util.Map;
 public class DecryptionFormForStats {
     private static final String firstHeader = "_1_";
     private static final String standardFormAbc = "оеаинтсврлпкдмйыьуяюэзгбчхшжцщф";
+    private int numOfCharsInWords;
+
+    public DecryptionFormForStats(int numOfCharsInWords) {
+        this.numOfCharsInWords = numOfCharsInWords;
+    }
 
     public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
@@ -32,7 +37,7 @@ public class DecryptionFormForStats {
             else {
                 if(!line.equals("")) {
 
-                    SetOfWords words = new SetOfWords(line.trim(), vocabulary);
+                    SetOfWords words = new SetOfWords(line.trim(), vocabulary, numOfCharsInWords);
 
                     writer.write(DecryptionStrings(words, vocabulary));
                 }
@@ -50,7 +55,7 @@ public class DecryptionFormForStats {
     }
 
     private String DecryptionStrings(SetOfWords setOfWords, Vocabulary vocabulary) {
-        Decrypt decrypt = new Decrypt();
+        Decrypt decrypt = new Decrypt(numOfCharsInWords);
 
         Map<Integer, Integer> abcMap = decrypt.DecipherAbc(setOfWords, vocabulary);
 

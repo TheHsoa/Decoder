@@ -14,6 +14,11 @@ public class Decrypt {
     double averageDepth = 0;
     double averageWordsInVocabulary;
     long operationTime;
+    int numOfCharsInWords;
+
+    Decrypt(int numOfCharsInWords) {
+        this.numOfCharsInWords = numOfCharsInWords;
+    }
 
     public void DecryptFromFileToFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
@@ -37,7 +42,7 @@ public class Decrypt {
 
         if(!Objects.equals(text, "")) {
 
-            SetOfWords setOfWords = new SetOfWords(text, vocabulary);
+            SetOfWords setOfWords = new SetOfWords(text, vocabulary, numOfCharsInWords);
 
             Map<String, String> wordsMap = DecipherWords(setOfWords, vocabulary);
             if(wordsMap == null) {
