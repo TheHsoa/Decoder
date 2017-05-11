@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public abstract class WordBase implements Comparable {
-    private String name;
+    String name;
     String structure;
     protected int length;
     private Set<Integer> abc = new HashSet<>();

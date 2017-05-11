@@ -137,7 +137,7 @@ public class TextStandardize {
 
             if (c >= 'А' && c <= 'Я' || c >= 'а' && c <= 'я' || c == 'ё' || c == 'Ё') {
                 if (c == 'ё' || c == 'Ё') {
-                    standardText += 'E';
+                    standardText += 'Е';
                 } else if (c == 'ъ' || c == 'Ъ') {
                     standardText += 'Ь';
                 } else {

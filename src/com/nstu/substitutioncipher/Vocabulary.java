@@ -29,7 +29,7 @@ public class Vocabulary {
         }
     }
 
-    public boolean inVocabulary(WordBase word){
+    boolean inVocabulary(WordBase word){
         try {
             WorkWithFile reader = new WorkWithFile(name + "\\" + word.getLength() + "\\" + word.getStructure() + ".txt");
             String line;
@@ -68,7 +68,7 @@ public class Vocabulary {
         }
     }
 
-    public void addWordsFromStandardTextFile(String path) {
+    private void addWordsFromStandardTextFile(String path) {
         WorkWithFile reader = new WorkWithFile(path);
         String word;
         try {
@@ -82,22 +82,45 @@ public class Vocabulary {
 
     public void addWordsFromAllStandardTextFiles(String path) {
         File[] filesLen = new File(path).listFiles();
-        for(int i = 0; i < filesLen.length; i++) {
-            addWordsFromStandardTextFile(filesLen[i].getPath());
+
+        if(filesLen == null) return;
+
+        for (File aFilesLen : filesLen) {
+            addWordsFromStandardTextFile(aFilesLen.getPath());
         }
     }
 
-    public void addSetOfWords(SetOfWords setOfWords) throws IOException {
-        Iterator<WordBase> wordIterator = setOfWords.getSetOfWords().iterator();
-        while(wordIterator.hasNext()) {
-            addNewWord(wordIterator.next());
+    private void addSetOfWords(SetOfWords setOfWords) throws IOException {
+        for (WordBase wordBase : setOfWords.getSetOfWords()) {
+            addNewWord(wordBase);
         }
     }
 
-    public void addWordsFromStandardText(String text) throws IOException {
+    private void addWordsFromStandardText(String text) throws IOException {
         text = DictionaryForm.delFirstAndLastSpaces(text);
         SetOfWords setOfWords = new SetOfWords(text);
         addSetOfWords(setOfWords);
+    }
+
+    private void addWordsFromTextFile(String path) throws IOException {
+        File inFile = new File(path);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
+
+        String text;
+
+        while((text = reader.readLine()) != null) {
+            addWordsFromStandardText(TextStandardize.convertToStandardText(text));
+        }
+    }
+
+    public void addWordsFromTextFiles(String path) throws IOException {
+        File[] filesLen = new File(path).listFiles();
+
+        if(filesLen == null) return;
+
+        for (File aFilesLen : filesLen) {
+            addWordsFromTextFile(aFilesLen.getPath());
+        }
     }
 
     public void addWordsFromStandardTextsFile(String path) throws IOException {

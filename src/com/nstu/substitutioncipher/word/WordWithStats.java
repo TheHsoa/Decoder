@@ -24,16 +24,19 @@ public class WordWithStats extends WordBase {
         double firstStructureLen = (double) structureStats / length;
         double secondStructureLen = (double) w.structureStats / w.length;
 
-        if(firstStructureLen == secondStructureLen && structureStats == w.structureStats) {
-            return -1;
-        }
-        if(firstStructureLen == secondStructureLen) {
-         //   return structureStats > w.structureStats ? 1 : -1;
-            return w.length > length ? 1 : -1;
+        if(firstStructureLen == 0) {
+            return 1;
         }
 
-        if(firstStructureLen == 0) {
+        if(secondStructureLen == 0) {
             return -1;
+        }
+
+        if(firstStructureLen == secondStructureLen) {
+            if(structureStats == w.structureStats)
+                return name.compareTo(w.getName());
+            else
+                return w.length > length ? 1 : -1;
         }
 
         return firstStructureLen > secondStructureLen ? 1 : -1;

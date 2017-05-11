@@ -24,14 +24,14 @@ public class Decrypt {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
         String tempText;
-        String text = "";
+        StringBuilder text = new StringBuilder();
 
         while((tempText = reader.readLine()) != null) {
-            text += tempText;
+            text.append(tempText);
         }
         reader.close();
 
-        writer.write(SubstitutionCipherDecrypt(text, vocabulary).toUpperCase());
+        writer.write(SubstitutionCipherDecrypt(text.toString(), vocabulary).toUpperCase());
 
         writer.flush();
         writer.close();

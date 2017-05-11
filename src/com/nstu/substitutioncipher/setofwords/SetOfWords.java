@@ -10,19 +10,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SetOfWords {
-    private Set<WordBase> setOfWords = new TreeSet<>();
+    private TreeSet<WordBase> setOfWords = new TreeSet<>();
     private Set<Integer> abc = new HashSet<>();
-    private Set<WordBase> setOfAbcWords = new TreeSet<>();
+    private TreeSet<WordBase> setOfAbcWords = new TreeSet<>();
     private Vocabulary vocabulary = null;
     private int numOfCharsInWords;
 
 
-    public Set<WordBase> getSetOfWords() {
+    public TreeSet<WordBase> getSetOfWords() {
 
         return setOfWords;
     }
 
-    public Set<WordBase> getSetOfAbcWords() {
+    public TreeSet<WordBase> getSetOfAbcWords() {
         return setOfAbcWords;
     }
 
@@ -31,7 +31,6 @@ public class SetOfWords {
 
         setOfWords = fillWords(text);
         abc = fillAbc(setOfWords);
-        setOfAbcWords = fillSetOfAbcWords_WithTotalLength100();
     }
 
     public SetOfWords(String text, Vocabulary vocabulary, int numOfCharsInWords) throws IOException {
@@ -86,7 +85,7 @@ public class SetOfWords {
         return words;
     }
 
-    private Set<Integer> fillAbc(Set<WordBase> words) {
+    private Set<Integer> fillAbc(TreeSet<WordBase> words) {
         Set<Integer> abc = new HashSet<>();
         for (WordBase word : words) {
             addCharsInAbc(word, abc);
@@ -95,8 +94,8 @@ public class SetOfWords {
         return abc;
     }
 
-    private Set<WordBase> fillSetOfAbcWords(Set<WordBase> words, Set<Integer> abc) {
-        Set<WordBase> abcWords = new TreeSet<>();
+    private TreeSet<WordBase> fillSetOfAbcWords(TreeSet<WordBase> words, Set<Integer> abc) {
+        TreeSet<WordBase> abcWords = new TreeSet<>();
         Map<Integer, Integer> bufAbcMap = new HashMap<>();
 
         //не тестилось, надо проверить часть:  bufAbcMap.values().stream().anyMatch(bam -> bam < 2)
@@ -111,7 +110,7 @@ public class SetOfWords {
         return abcWords;
     }
 
-    private void addWordIfExtends(WordBase word, Set<WordBase> abcWords, Map<Integer, Integer> bufAbcMap) {
+    private void addWordIfExtends(WordBase word, TreeSet<WordBase> abcWords, Map<Integer, Integer> bufAbcMap) {
         if(containsChar(word, bufAbcMap)) abcWords.add(word);
         addCharsInAbc(word, bufAbcMap);
     }
@@ -123,7 +122,7 @@ public class SetOfWords {
         return false;
     }
 
-    private boolean containWord(WordBase word, Set<WordBase> abc) {
+    private boolean containWord(WordBase word, TreeSet<WordBase> abc) {
         for (WordBase anAbc : abc) {
             if (anAbc.getName().equals(word.getName())) {
                 return true;
@@ -140,7 +139,7 @@ public class SetOfWords {
         word.getAbc().forEach(x -> abc.put(x, abc.containsKey(x) ? abc.get(x) + 1 : 1));
     }
 
-    private int getSumLengthOfWordsInSetOfWords(Set<WordBase> setOfWords) {
+    private int getSumLengthOfWordsInSetOfWords(TreeSet<WordBase> setOfWords) {
         int length = 0;
         for (WordBase setOfWord : setOfWords) {
             length += setOfWord.getLength();
@@ -148,10 +147,10 @@ public class SetOfWords {
         return length;
     }
 
-    private Set<WordBase> fillSetOfAbcWords_WithTotalLength100() {
-        Set<WordBase> wordsWithVocabulary = getSetOfWordsWithVocabulary();
+    private TreeSet<WordBase> fillSetOfAbcWords_WithTotalLength100() {
+        TreeSet<WordBase> wordsWithVocabulary = getSetOfWordsWithVocabulary();
         if(getSumLengthOfWordsInSetOfWords(wordsWithVocabulary) > 100) {
-            Set<WordBase> abcWords = fillSetOfAbcWords(wordsWithVocabulary, abc);
+            TreeSet<WordBase> abcWords = fillSetOfAbcWords(wordsWithVocabulary, abc);
 
             Iterator<WordBase> iterator = wordsWithVocabulary.iterator();
             int sumLength = getSumLengthOfWordsInSetOfWords(abcWords);
@@ -169,7 +168,7 @@ public class SetOfWords {
         return wordsWithVocabulary;
     }
 
-    private Set<WordBase> getSetOfWordsWithVocabulary() {
+    private TreeSet<WordBase> getSetOfWordsWithVocabulary() {
         return new TreeSet<>(setOfWords.stream().map(x -> (WordWithStats)x).filter(x -> x.getStructureStats() != 0).collect(Collectors.toSet()));
     }
 

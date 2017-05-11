@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class WordsDecrypt {
+class WordsDecrypt {
     private Map<String,Map<String,Integer>> WordsDecryptMap;
     private Map<String, List<String>> WordsVocabulary;
     private Map<String, Set<Integer>> WordsNewChars;
