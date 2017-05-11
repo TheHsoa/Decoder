@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Vocabularies {
     public final static HashMap<String, String> vocabularies;
     static {
-        final String path = "D:\\учеба\\Магистратура\\Диплом\\Vocabularies";
+        final String path = "Vocabularies";
         vocabularies = new HashMap<>();
         File[] files = new File(path).listFiles();
         for (File file: files

@@ -2,96 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccf86cb-4722-472e-9f99-80bb99c92786" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/Vocabularies.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/experiment/Experiment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chBigVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chBigVocabularyClean.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chBigVocabularyWordsInTheEnd.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chISVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chLemmasAndTextWordsVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chLemmasVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chMiddleVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/1chTextVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chBigVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chBigVocabularyClean.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chBigVocabularyWordsInTheEnd.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chISVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chLemmasAndTextWordsVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chLemmasVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chMiddleVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/For Statistics/2chTextVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chBigVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chBigVocabularyClean.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chBigVocabularyWordsInTheEnd.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chISVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chLemmasAndTextWordsVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chLemmasVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chMiddleVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/1chTextVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chBigVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chBigVocabularyClean.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chBigVocabularyWordsInTheEnd.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chISVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chLemmasAndTextWordsVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chLemmasVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chMiddleVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Experiments/out/Readable/2chTextVocabulary.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyCleanStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyCleanStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyCleanStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyCleanStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyWordsInTheEndStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyWordsInTheEndStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyWordsInTheEndStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/BigVocabularyWordsInTheEndStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/ISVocabularyStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/ISVocabularyStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/ISVocabularyStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/ISVocabularyStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasAndTextWordsVocabularyStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasAndTextWordsVocabularyStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasAndTextWordsVocabularyStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasAndTextWordsVocabularyStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasVocabularyStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasVocabularyStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasVocabularyStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/LemmasVocabularyStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/MiddleVocabularyStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/MiddleVocabularyStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/MiddleVocabularyStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/MiddleVocabularyStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/TextVocabularyStatistics/easyStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/TextVocabularyStatistics/otherStructStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/TextVocabularyStatistics/structStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vocabularies statistic/TextVocabularyStatistics/wordStat.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/experiment/Experiment.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/Experiment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/source$1.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/DictionaryForm.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/DictionaryForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/Vocabulary.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/Vocabulary.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/decryption/Decrypt.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/decryption/Decrypt.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/decryption/DecryptionForm.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/decryption/DecryptionForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/decryption/WordsDecrypt.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/decryption/WordsDecrypt.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/setofwords/SetOfWords.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/setofwords/SetOfWords.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/source.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/source.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/word/WordBase.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/word/WordBase.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/word/WordWithStats.class" afterPath="$PROJECT_DIR$/out/production/Decoder/com/nstu/substitutioncipher/word/WordWithStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/TextStandardize.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/TextStandardize.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabulary.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabulary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/decryption/Decrypt.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/decryption/Decrypt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/decryption/WordsDecrypt.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/decryption/WordsDecrypt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/setofwords/SetOfWords.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/setofwords/SetOfWords.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/source.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/source.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordBase.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordWithStats.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordWithStats.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java" afterPath="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java" />
     </list>
     <ignored path="Decoder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -159,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="source.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="source.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/source.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="89" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,6 +102,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Vocabularies.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DecryptionForm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/decryption/DecryptionForm.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -212,33 +133,9 @@
       <file leaf-file-name="Experiment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/experiment/Experiment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="401">
               <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#750#751#0" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WordBase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#567#568#0" expanded="false" />
-                <element signature="e#594#595#0" expanded="false" />
-                <element signature="e#630#631#0" expanded="false" />
-                <element signature="e#662#663#0" expanded="false" />
-                <element signature="e#693#694#0" expanded="false" />
-                <element signature="e#722#723#0" expanded="false" />
-                <element signature="e#1877#1878#0" expanded="false" />
-                <element signature="e#1931#1932#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -319,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabulary.java" />
         <option value="$PROJECT_DIR$/Experiments/out/Readable/2chBigVocabularyClean.txt" />
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordBase.java" />
-        <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java" />
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/experiment/Experiment.java" />
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/setofwords/SetOfWords.java" />
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/decryption/Decrypt.java" />
@@ -328,6 +224,7 @@
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/word/WordWithStats.java" />
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/TextStandardize.java" />
         <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/source.java" />
+        <option value="$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java" />
       </list>
     </option>
   </component>
@@ -986,7 +883,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2879925" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833022" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32363978" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32363978" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32214764" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1168,6 +1065,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="50" column="58" lean-forward="false" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3555#3556#0" expanded="false" />
+            <element signature="e#3600#3601#0" expanded="false" />
+            <element signature="e#3660#3661#0" expanded="false" />
+            <element signature="e#3694#3695#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1197,6 +1101,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="57" column="33" lean-forward="false" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#491#492#0" expanded="false" />
+            <element signature="e#549#550#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1204,6 +1113,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="661">
           <caret line="79" column="18" lean-forward="false" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,14 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1263,18 +1165,6 @@
             <element signature="imports" expanded="false" />
             <element signature="e#497#498#0" expanded="false" />
             <element signature="e#555#556#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/experiment/Experiment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1347,11 +1237,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/source.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="89" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/experiment/Experiment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nstu/substitutioncipher/Vocabularies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
