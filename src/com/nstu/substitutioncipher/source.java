@@ -9,7 +9,10 @@ public class source {
     private static final String inFilePath = "Experiments\\in\\input.txt";
 
     public static void main(String[] args) throws IOException {
-        new Vocabulary("D:\\учеба\\Магистратура\\Диплом\\test\\MiddleVocabulary").addWordsFromTextFiles("D:\\учеба\\Магистратура\\Диплом\\test\\MiddleVocabularyTexts");
+        for(int i = 1; i <=2; i++) {
+            new Experiment("MiddleVocabulary", i, inFilePath).MakeExperiment();
+            new Experiment("MiddleVocabulary", i, inFilePath).MakeExperimentForStatistics();
+        }
     }
 
 
