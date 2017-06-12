@@ -1,7 +1,7 @@
 package com.nstu.substitutioncipher.decryption;
 
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
-import com.nstu.substitutioncipher.Vocabulary;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 
 import java.io.*;
 import java.util.*;
@@ -16,7 +16,7 @@ public class DecryptionForm {
         this.numOfCharsInWords = numOfCharsInWords;
     }
 
-    public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
+    public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, IVocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
         String line;
@@ -79,7 +79,7 @@ public class DecryptionForm {
         return text.trim();
     }
 
-    private String DecryptionStrings(SetOfWords setOfWords, Vocabulary vocabulary) {
+    private String DecryptionStrings(SetOfWords setOfWords, IVocabulary vocabulary) {
         Decrypt decrypt = new Decrypt(numOfCharsInWords);
 
         Map<Integer, Integer> abcMap = decrypt.DecipherAbc(setOfWords, vocabulary);

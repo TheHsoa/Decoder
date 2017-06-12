@@ -1,7 +1,7 @@
 package com.nstu.substitutioncipher;
 
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
-import com.nstu.substitutioncipher.word.Word;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 import com.nstu.substitutioncipher.word.WordBase;
 
 import java.io.*;
@@ -11,13 +11,14 @@ public class DictionaryForm {
 
     private static final String firstHeader = "_1_";
 
-    public static void saveStandardTextsToSetOfAbcWordsInDictionaryForm(String inFileName, String outFileName, String vocabularyPath) throws IOException {
+    public static void saveStandardTextsToSetOfAbcWordsInDictionaryForm(String inFileName, String outFileName, IVocabulary vocabulary) throws IOException {
         File inFile = new File(inFileName);
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
 
         File outFile = new File(outFileName);
 
         if(outFile.exists()) {
+            //noinspection ResultOfMethodCallIgnored
             outFile.delete();
         }
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
@@ -32,7 +33,6 @@ public class DictionaryForm {
         int headerIterator = 1;
         String currentHeader = firstHeader;
 
-        Vocabulary vocabulary = new Vocabulary(vocabularyPath);
         do {
             if(line.equals(currentHeader)) {
                 writer.newLine();
@@ -94,7 +94,7 @@ public class DictionaryForm {
         return text.split(" ").length;
     }
 
-    static String delFirstAndLastSpaces(String text)
+    public static String delFirstAndLastSpaces(String text)
     {
         return text.trim();
     }

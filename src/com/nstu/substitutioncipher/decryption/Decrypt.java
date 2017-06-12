@@ -2,7 +2,7 @@ package com.nstu.substitutioncipher.decryption;
 
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
 import com.nstu.substitutioncipher.TextStandardize;
-import com.nstu.substitutioncipher.Vocabulary;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 import com.nstu.substitutioncipher.word.WordBase;
 
 import java.io.*;
@@ -14,13 +14,13 @@ public class Decrypt {
     double averageDepth = 0;
     double averageWordsInVocabulary;
     long operationTime;
-    int numOfCharsInWords;
+    private int numOfCharsInWords;
 
     Decrypt(int numOfCharsInWords) {
         this.numOfCharsInWords = numOfCharsInWords;
     }
 
-    public void DecryptFromFileToFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
+    public void DecryptFromFileToFile(File inFile, File outFile, IVocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
         String tempText;
@@ -37,7 +37,7 @@ public class Decrypt {
         writer.close();
     }
 
-    private String SubstitutionCipherDecrypt(String text, Vocabulary vocabulary) throws IOException {
+    private String SubstitutionCipherDecrypt(String text, IVocabulary vocabulary) throws IOException {
         text = TextStandardize.convertToStandardText(text);
 
         if(!Objects.equals(text, "")) {
@@ -54,7 +54,7 @@ public class Decrypt {
         return "";
     }
 
-    Map<Integer, Integer> DecipherAbc(SetOfWords setOfWords, Vocabulary vocabulary) {
+    Map<Integer, Integer> DecipherAbc(SetOfWords setOfWords, IVocabulary vocabulary) {
 
         long startTime = System.currentTimeMillis();
 
@@ -114,7 +114,7 @@ public class Decrypt {
         return wordsDecrypt.getAbcDecryptMap();
     }
 
-    private Map<String, String> DecipherWords(SetOfWords setOfWords, Vocabulary vocabulary) {
+    private Map<String, String> DecipherWords(SetOfWords setOfWords, IVocabulary vocabulary) {
         Map<String, String> wordsMap = new HashMap<>();
         Map<Integer, Integer> abcMap = DecipherAbc(setOfWords, vocabulary);
         if(abcMap == null) {
@@ -129,28 +129,28 @@ public class Decrypt {
     }
 
     private String SubstituteAbcMapInWord(Map<Integer, Integer> abcMap, String word) {
-        String newWord = "";
+        StringBuilder newWord = new StringBuilder();
 
         for(int i = 0; i < word.length(); i ++) {
-            newWord += (char) abcMap.get((int)word.charAt(i)).intValue();
+            newWord.append((char) abcMap.get((int) word.charAt(i)).intValue());
         }
-        return newWord;
+        return newWord.toString();
     }
 
     private String SubstituteWordsMapInText(Map<String, String> wordsMap, String text) {
-        String outText = "";
+        StringBuilder outText = new StringBuilder();
 
         int beginIndex = 0;
         int endIndex;
         while((endIndex = text.indexOf(' ', beginIndex)) > 0) {
             String word = text.substring(beginIndex, endIndex);
-            outText += wordsMap.get(word) + ' ';
+            outText.append(wordsMap.get(word)).append(' ');
             beginIndex = endIndex + 1;
         }
 
         String word = text.substring(beginIndex, text.length());
-        outText += wordsMap.get(word) + ' ';
+        outText.append(wordsMap.get(word)).append(' ');
 
-        return outText;
+        return outText.toString();
     }
 }

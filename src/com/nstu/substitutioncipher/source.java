@@ -3,6 +3,8 @@ package com.nstu.substitutioncipher;
 
 import com.nstu.substitutioncipher.experiment.Experiment;
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
+import com.nstu.substitutioncipher.vocabularies.decryptionvocabulary.Vocabularies;
+import com.nstu.substitutioncipher.vocabularies.decryptionvocabulary.Vocabulary;
 import com.nstu.substitutioncipher.word.WordBase;
 
 import java.io.*;

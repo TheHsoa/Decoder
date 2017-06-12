@@ -1,6 +1,6 @@
 package com.nstu.substitutioncipher.setofwords;
 
-import com.nstu.substitutioncipher.Vocabulary;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 import com.nstu.substitutioncipher.word.Word;
 import com.nstu.substitutioncipher.word.WordBase;
 import com.nstu.substitutioncipher.word.WordWithStats;
@@ -33,7 +33,7 @@ public class SetOfWords {
         setOfAbcWords = fillSetOfAbcWords(setOfWords, abc);
     }
 
-    public SetOfWords(String text, Vocabulary vocabulary, int numOfCharsInWords) throws IOException {
+    public SetOfWords(String text, IVocabulary vocabulary, int numOfCharsInWords) throws IOException {
         this.numOfCharsInWords = numOfCharsInWords;
 
         text = deleteFirstAndLastWords(text);
@@ -63,7 +63,7 @@ public class SetOfWords {
         return words;
     }
 
-    private TreeSet<WordBase> fillWords(String text, Vocabulary vocabulary) throws IOException {
+    private TreeSet<WordBase> fillWords(String text, IVocabulary vocabulary) throws IOException {
         TreeSet<WordBase> words = new TreeSet<>();
         int beginIndex = 0;
         int endIndex = text.indexOf(' ', beginIndex);

@@ -1,10 +1,9 @@
 package com.nstu.substitutioncipher.decryption;
 
-import com.nstu.substitutioncipher.Vocabulary;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.Map;
 
 public class DecryptionFormForStats {
@@ -16,7 +15,7 @@ public class DecryptionFormForStats {
         this.numOfCharsInWords = numOfCharsInWords;
     }
 
-    public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, Vocabulary vocabulary) throws IOException {
+    public void DecryptFromStandardTextsFileToDecryptionFormFile(File inFile, File outFile, IVocabulary vocabulary) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
         String line;
@@ -54,24 +53,24 @@ public class DecryptionFormForStats {
         writer.close();
     }
 
-    private String DecryptionStrings(SetOfWords setOfWords, Vocabulary vocabulary) {
+    private String DecryptionStrings(SetOfWords setOfWords, IVocabulary vocabulary) {
         Decrypt decrypt = new Decrypt(numOfCharsInWords);
 
         Map<Integer, Integer> abcMap = decrypt.DecipherAbc(setOfWords, vocabulary);
 
-        String decryptAbc = "";
+        StringBuilder decryptAbc = new StringBuilder();
 
         for(int i = 0; i < standardFormAbc.length(); i++) {
                 int c = standardFormAbc.charAt(i);
                 if (abcMap.containsKey(c)) {
-                    decryptAbc += (char) abcMap.get(c).intValue();
+                    decryptAbc.append((char) abcMap.get(c).intValue());
                 }
                 else {
-                    decryptAbc += "-";
+                    decryptAbc.append("-");
                 }
         }
-        decryptAbc += " 1\t0\t [VOC]";
+        decryptAbc.append(" 1\t0\t [VOC]");
 
-        return decryptAbc.toUpperCase();
+        return decryptAbc.toString().toUpperCase();
     }
 }

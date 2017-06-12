@@ -1,7 +1,7 @@
 package com.nstu.substitutioncipher.decryption;
 
 import com.nstu.substitutioncipher.setofwords.SetOfWords;
-import com.nstu.substitutioncipher.Vocabulary;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 import com.nstu.substitutioncipher.word.Word;
 import com.nstu.substitutioncipher.word.WordBase;
 
@@ -16,7 +16,7 @@ class WordsDecrypt {
     private WordsCrossingMap CrossingMap;
     private AbcDecryptMap AbcDecryptMap;
 
-    WordsDecrypt(SetOfWords words, Vocabulary vocabulary) throws IOException {
+    WordsDecrypt(SetOfWords words, IVocabulary vocabulary) throws IOException {
         WordsDecryptMap = new HashMap<>();
         WordsVocabulary = new HashMap<>();
         WordsNewChars = new HashMap<>();

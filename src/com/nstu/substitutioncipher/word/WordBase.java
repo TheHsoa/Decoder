@@ -35,21 +35,21 @@ public abstract class WordBase implements Comparable {
     }
 
     private String calcStructure() {
-        String structure = "а";
+        StringBuilder structure = new StringBuilder("а");
         char index = 'б';
         for(int i = 1; i < this.name.length(); i++) {
             for(int j = 0; j < i; j++) {
                 if(name.charAt(i) == name.charAt(j)) {
-                    structure+=structure.charAt(j);
+                    structure.append(structure.charAt(j));
                     break;
                 }
                 if(j == (i-1)) {
-                    structure+=index;
+                    structure.append(index);
                     index++;
                 }
             }
         }
-        return structure;
+        return structure.toString();
     }
 
     private String createClearWord(String name){

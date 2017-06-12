@@ -1,6 +1,6 @@
 package com.nstu.substitutioncipher.word;
 
-import com.nstu.substitutioncipher.Vocabulary;
+import com.nstu.substitutioncipher.vocabularies.IVocabulary;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ public class WordWithStats extends WordBase {
         return structureStats;
     }
 
-    public WordWithStats(String name, Vocabulary vocabulary) throws IOException {
+    public WordWithStats(String name, IVocabulary vocabulary) throws IOException {
         super(name);
         structureStats = vocabulary.getNumberOfWordsInStructure(structure);
 
