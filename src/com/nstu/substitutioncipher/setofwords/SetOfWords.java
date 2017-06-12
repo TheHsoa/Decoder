@@ -13,7 +13,6 @@ public class SetOfWords {
     private TreeSet<WordBase> setOfWords = new TreeSet<>();
     private Set<Integer> abc = new HashSet<>();
     private TreeSet<WordBase> setOfAbcWords = new TreeSet<>();
-    private Vocabulary vocabulary = null;
     private int numOfCharsInWords;
 
 
@@ -31,12 +30,11 @@ public class SetOfWords {
 
         setOfWords = fillWords(text);
         abc = fillAbc(setOfWords);
+        setOfAbcWords = fillSetOfAbcWords(setOfWords, abc);
     }
 
     public SetOfWords(String text, Vocabulary vocabulary, int numOfCharsInWords) throws IOException {
         this.numOfCharsInWords = numOfCharsInWords;
-
-        this.vocabulary = vocabulary;
 
         text = deleteFirstAndLastWords(text);
 
