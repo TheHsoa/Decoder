@@ -1,3 +1,4 @@
 out/production/Decoder/test/
 src/test/
-Vocabularies/
+/Vocabularies/
+/KVocabularies/

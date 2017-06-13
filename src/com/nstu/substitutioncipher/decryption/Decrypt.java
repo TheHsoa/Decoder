@@ -103,7 +103,8 @@ public class Decrypt {
                 i++;
                 if(maxDepth < i) {
                     maxDepth = i;
-                    maxDepthAbcDecryptMap = wordsDecrypt.getAbcDecryptMap();
+                    maxDepthAbcDecryptMap.clear();
+                    maxDepthAbcDecryptMap.putAll(wordsDecrypt.getAbcDecryptMap());
                 }
             }
         }

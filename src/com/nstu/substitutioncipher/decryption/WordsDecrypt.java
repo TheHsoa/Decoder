@@ -74,22 +74,7 @@ class WordsDecrypt {
                     .get(word.getStructure())
                     .get(WordsDecryptMap.get(word.getStructure()).
                             get(word.getName())))) {
-
-                //return true;
-
-                List<String> crossing = CrossingMap.getWordsCrossingMap().get(word.getName());
-
-                if(crossing.isEmpty()) {
-                    return true;
-                }
-
-                for (String aCrossing : crossing) {
-                    if (isValidWord(AbcDecryptMap.getWordPattern(aCrossing), new Word(aCrossing).getStructure())) {
-                        return true;
-                    }
-                }
-                clearWordInAbcMap(word);
-
+                return true;
             }
             else {
                 clearWordInAbcMap(word);
